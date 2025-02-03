@@ -1,9 +1,13 @@
 import React from 'react'
 
+
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <h1>Home</h1>
+    <button>포켓몬 도감 시작하기</button>
+    </>
   )
 }
 
-export default Home
+export default Home;

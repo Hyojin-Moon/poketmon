@@ -1,12 +1,8 @@
 import './css/reset.css'
+import Router from './shared/Router.jsx'
 
 function App() {
-
-  return (
-    <div>
-      <h1>포켓몬웹페이지</h1>
-    </div>
-  )
+  return <Router />
 }
 
 export default App

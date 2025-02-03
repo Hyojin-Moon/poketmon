@@ -1,10 +1,15 @@
-import React from 'react'
+import styled from 'styled-components'
 
+const DashboardContainer = styled.div`
+  display: flex;
+`
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <DashboardContainer>
+      대쉬보드
+    </DashboardContainer>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

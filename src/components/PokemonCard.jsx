@@ -30,7 +30,10 @@ const Button = styled.button`
   height: 30px;
   border-radius: 5px;
   cursor: pointer;
-`
+`;
+const CardSection = styled.div`
+  
+`;
 const PokemonCard = ({ pokemon, addPokemon }) => {
 
   const navigate = useNavigate();
@@ -40,12 +43,14 @@ const PokemonCard = ({ pokemon, addPokemon }) => {
   }
 
   return (
-    <CardContainer onClick={handleClick}>
-    <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
-    <PokemonName>{pokemon.korean_name}</PokemonName>
-    <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
-    <Button onClick={()=>{addPokemon(pokemon)}}>추가</Button>
-  </CardContainer>
+    <CardContainer>
+      <CardSection onClick={handleClick}>
+        <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
+        <PokemonName>{pokemon.korean_name}</PokemonName>
+        <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
+      </CardSection>
+      <Button onClick={() => { addPokemon(pokemon) }}>추가</Button>
+    </CardContainer>
   )
 };
 

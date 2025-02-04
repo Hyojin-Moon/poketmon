@@ -14,7 +14,7 @@ const PokemonImg = styled.img`
   height: 100px;
 `;
 
-const Dashboard = ({selectedPokemons}) => {
+const Dashboard = ({selectedPokemons, removePokemon}) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
   // 기본 포켓몬 이미지를 6개로 설정
@@ -28,6 +28,7 @@ const Dashboard = ({selectedPokemons}) => {
             src={pokemon.img_url}
             alt={pokemon.korean_name}
           />
+          <button onClick={()=>{removePokemon(pokemon.id)}}>삭제</button>
         </div>
       ))}
     </DashboardContainer>

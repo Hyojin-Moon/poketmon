@@ -20,6 +20,7 @@ const PokemonCard = ({ pokemon }) => {
     <CardContainer>
     <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
     <h3>{pokemon.korean_name}</h3>
+    <button>추가</button>
   </CardContainer>
   )
 };

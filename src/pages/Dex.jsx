@@ -17,11 +17,12 @@ const Dex = () => {
   const [pokemonData, setPokemonData] = useState(MOCK_DATA);
   const [selectedPokemons, setSelectedPokemons] = useState([]);
 
+  //포켓몬 추가 함수
   const addPokemon = (pokemon) => {
     if (selectedPokemons.length < 6 && !selectedPokemons.some(p => p.id === pokemon.id)) {
       setSelectedPokemons([...selectedPokemons, pokemon]);
     } else {
-      alert("최대 6마리까지만 선택 가능합니다.");
+      alert("최대 6마리까지만 잡을 수 있습니다!");
     }
   };
 

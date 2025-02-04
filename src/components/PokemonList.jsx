@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
 
@@ -14,8 +14,8 @@ const PokemonList = ({ pokemonData, addPokemon }) => {
 
   return (
     <ListContainer>
-    {pokemonData.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon}/>
+      {pokemonData.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon} />
       ))}
     </ListContainer>
   );

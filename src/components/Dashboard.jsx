@@ -24,7 +24,23 @@ const PokemonSlot = styled.div`
   padding: 10px;
   border: 1px solid black;
 `;
-const Dashboard = ({selectedPokemons, removePokemon}) => {
+const PokemonName = styled.div`
+  margin-bottom: 15px;
+`
+const PokemonID = styled.div`
+  margin-bottom: 15px;
+  color: gray;
+`;
+const Button = styled.button`
+  background-color: red;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+`
+const Dashboard = ({ selectedPokemons, removePokemon }) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
   // 기본 포켓몬 이미지를 6개로 설정
@@ -40,11 +56,13 @@ const Dashboard = ({selectedPokemons, removePokemon}) => {
         const isEmpty = pokemon === null; // null 체크용 변수
 
         return (
-          <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}> 
-            {/* 빈값이면 기본이미지, 아니면 포켓몬이미지 */}
+          <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}>
+            {/* 빈값이면 기본이미지, 아니면 포켓몬정보 */}
             <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
+            <PokemonName>{isEmpty? null : pokemon.korean_name}</PokemonName>
+            <PokemonID>{isEmpty? null : `No. 00${pokemon.id}`}</PokemonID>
             {/* 빈값이 아닐때만 삭제버튼 표시 */}
-            {!isEmpty && <button onClick={() => removePokemon(pokemon.id)}>삭제</button>}
+            {!isEmpty && <Button onClick={() => removePokemon(pokemon.id)}>삭제</Button>}
           </PokemonSlot>
         );
       })}

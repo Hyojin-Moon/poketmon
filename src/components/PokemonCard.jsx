@@ -14,10 +14,10 @@ const PokemonImage = styled.img`
   width: 100px;
   height: 100px;
 `;
-const Name = styled.h3`
+const PokemonName = styled.div`
   margin-bottom: 15px;
 `
-const ID = styled.h3`
+const PokemonID = styled.div`
   margin: 15px;
   color: gray;
 `;
@@ -34,8 +34,8 @@ const PokemonCard = ({ pokemon, addPokemon }) => {
   return (
     <CardContainer>
     <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
-    <Name><h3>{pokemon.korean_name}</h3></Name>
-    <ID><h3>{`No. 00${pokemon.id}`}</h3></ID>
+    <PokemonName>{pokemon.korean_name}</PokemonName>
+    <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
     <Button onClick={()=>{addPokemon(pokemon)}}>추가</Button>
   </CardContainer>
   )

@@ -1230,4 +1230,5 @@ const MOCK_DATA = [
       "에스퍼 타입의 전설의 포켓몬으로, 희귀하고 신비로운 능력을 가집니다.",
   },
 ];
+
 export default MOCK_DATA;

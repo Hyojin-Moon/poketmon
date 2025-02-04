@@ -49,7 +49,6 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
     filledPokemons.push(null); //빈칸으로 슬롯 추가
   }
 
-
   return (
     <DashboardContainer>
       {filledPokemons.map((pokemon, index) => {

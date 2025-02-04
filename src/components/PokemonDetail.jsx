@@ -1,8 +1,9 @@
 
-
 const PokemonDetail = () => {
+
   return (
-    <div>PokemonDetail</div>
+    <div>detail page
+    </div>
   )
 }
 

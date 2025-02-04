@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
@@ -31,8 +32,15 @@ const Button = styled.button`
   cursor: pointer;
 `
 const PokemonCard = ({ pokemon, addPokemon }) => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/pokemon?id=${pokemon.id}`);
+  }
+
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
     <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
     <PokemonName>{pokemon.korean_name}</PokemonName>
     <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>

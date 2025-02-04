@@ -15,12 +15,12 @@ const PokemonImage = styled.img`
 `;
 
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, addPokemon }) => {
   return (
     <CardContainer>
     <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
     <h3>{pokemon.korean_name}</h3>
-    <button>추가</button>
+    <button onClick={()=>{addPokemon(pokemon)}}>추가</button>
   </CardContainer>
   )
 };

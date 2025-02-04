@@ -10,12 +10,12 @@ const ListContainer = styled.div`
   padding: 20px;
 `;
 
-const PokemonList = ({ pokemonData }) => {
+const PokemonList = ({ pokemonData, addPokemon }) => {
 
   return (
     <ListContainer>
     {pokemonData.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon}/>
       ))}
     </ListContainer>
   );

@@ -9,12 +9,13 @@ const PokemonDetail = () => {
 
   // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
   // 정보 뿌려주기
-  const pokemonData = MOCK_DATA.find((e) => e.id === pokemonId);
-  console.log("matchid =>",pokemonData);
+  // 쿼리파라미터는 무조건 문자열임 / 문자배열 / undefined
+  const pokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
+  console.log("matchid =>", pokemonData);
 
   return (
     <div>
-      {pokemonData.img_url}
+      <img src={pokemonData.img_url} alt="" />
       {pokemonData.korean_name}
       {pokemonData.types}
       {pokemonData.description}

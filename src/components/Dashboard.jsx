@@ -6,7 +6,7 @@ const DashboardContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 20px auto;
   padding: 20px;
   border: 2px solid #ddd;

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  width: 150px;
+  width: 120px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;

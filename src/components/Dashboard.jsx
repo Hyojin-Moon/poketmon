@@ -1,45 +1,73 @@
 import styled from 'styled-components'
 
 const DashboardContainer = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  gap: 50px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fefefe;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 `;
-const PokemonImg = styled.img`
-  width: 100px;
-  height: 100px;
+const Title = styled.h2`
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #9b2d2d;
+`;
+
+const SlotContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  width: 100%;
 `;
 const PokemonSlot = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  justify-content: center;
+  border: 2px dashed #ccc; /* 점선 테두리 */
   padding: 10px;
-  border: 1px solid black;
+  border-radius: 8px;
+  min-width: 120px;
+  min-height: 150px;
+  background-color: #f9f9f9;
 `;
-const PokemonName = styled.div`
-  margin-bottom: 15px;
-`
-const PokemonID = styled.div`
-  margin-bottom: 15px;
-  color: gray;
+const PokemonImg = styled.img`
+  width: 80px;
+  height: 80px;
 `;
+
+const PokemonName = styled.p`
+  font-weight: bold;
+  margin: 5px 0;
+`;
+
+const PokemonID = styled.p`
+  font-size: 14px;
+  color: #666;
+`;
+
 const Button = styled.button`
-  background-color: red;
-  color: white;
+  margin-top: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
   border: none;
-  width: 50px;
-  height: 30px;
-  border-radius: 5px;
+  background-color: #ff6b6b;
+  color: white;
   cursor: pointer;
-`
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #ff4d4d;
+  }
+`;
 const Dashboard = ({ selectedPokemons, removePokemon }) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
@@ -50,21 +78,25 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
   }
 
   return (
-    <DashboardContainer>
-      {filledPokemons.map((pokemon, index) => {
-        const isEmpty = pokemon === null; // null 체크용 변수
 
-        return (
-          <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}>
-            {/* 빈값이면 기본이미지, 아니면 포켓몬정보 */}
-            <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
-            <PokemonName>{isEmpty? null : pokemon.korean_name}</PokemonName>
-            <PokemonID>{isEmpty? null : `No. 00${pokemon.id}`}</PokemonID>
-            {/* 빈값이 아닐때만 삭제버튼 표시 */}
-            {!isEmpty && <Button onClick={() => removePokemon(pokemon.id)}>삭제</Button>}
-          </PokemonSlot>
-        );
-      })}
+    <DashboardContainer>
+      <Title>나만의 포켓몬</Title>
+      <SlotContainer>
+        {filledPokemons.map((pokemon, index) => {
+          const isEmpty = pokemon === null; // null 체크용 변수
+
+          return (
+            <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}>
+              {/* 빈값이면 기본이미지, 아니면 포켓몬정보 */}
+              <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
+              <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
+              <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
+              {/* 빈값이 아닐때만 삭제버튼 표시 */}
+              {!isEmpty && <Button onClick={() => removePokemon(pokemon.id)}>삭제</Button>}
+            </PokemonSlot>
+          );
+        })}
+        </SlotContainer>
     </DashboardContainer>
   );
 };

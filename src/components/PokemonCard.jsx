@@ -38,6 +38,10 @@ const Button = styled.button`
   height: 30px;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ff4d4d;
+  }
 `;
 const PokemonCard = ({ pokemon, addPokemon }) => {
 

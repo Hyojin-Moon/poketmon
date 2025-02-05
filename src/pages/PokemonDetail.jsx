@@ -94,7 +94,7 @@ const PokemonDetail = () => {
     <BackButton onClick={()=>{
       navigate("/dex");
     }}>뒤로 가기</BackButton>
-    <AddDeleteButton>삭제</AddDeleteButton>
+    <AddDeleteButton>삭제/추가</AddDeleteButton>
   </Container>
 );
 };

@@ -79,6 +79,12 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
     filledPokemons.push(null); //빈칸으로 슬롯 추가
   }
 
+  const navigate = useNavigate();
+
+  const handleCardClick = (pokemon) => {
+    navigate(`/pokemon?id=${pokemon.id}`);
+  };
+
   return (
     <DashboardContainer>
       <Title>나만의 포켓몬</Title>
@@ -87,15 +93,20 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
           const isEmpty = pokemon === null; // null 체크용 변수
 
           return (
-            <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}>
+            <PokemonSlot
+              onClick={()=>handleCardClick(pokemon)}
+              key={isEmpty ? `empty-${index}` : pokemon.id}>
               <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
               <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
               <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
-              {!isEmpty && <Button onClick={() => removePokemon(pokemon.id)}>삭제</Button>}
+              {!isEmpty && <Button onClick={(e) => {
+                e.stopPropagation();
+                removePokemon(pokemon.id)
+              }}>삭제</Button>}
             </PokemonSlot>
           );
         })}
-        </SlotContainer>
+      </SlotContainer>
     </DashboardContainer>
   );
 };

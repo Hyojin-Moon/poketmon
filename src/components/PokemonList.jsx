@@ -19,7 +19,7 @@ const ListContainer = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px; /* 카드 간 간격 추가 */
+  gap: 15px; 
   width: 100%;
   justify-content: center;
 `;

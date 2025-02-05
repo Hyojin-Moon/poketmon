@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 const DashboardContainer = styled.div`
@@ -78,7 +80,6 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
   }
 
   return (
-
     <DashboardContainer>
       <Title>나만의 포켓몬</Title>
       <SlotContainer>
@@ -87,11 +88,9 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
 
           return (
             <PokemonSlot key={isEmpty ? `empty-${index}` : pokemon.id}>
-              {/* 빈값이면 기본이미지, 아니면 포켓몬정보 */}
               <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
               <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
               <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
-              {/* 빈값이 아닐때만 삭제버튼 표시 */}
               {!isEmpty && <Button onClick={() => removePokemon(pokemon.id)}>삭제</Button>}
             </PokemonSlot>
           );

@@ -40,6 +40,7 @@ const Dex = () => {
   useEffect(() => {
     localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
   },[selectedPokemons]);
+  
   return (
     <DexContainer>
       <Dashboard selectedPokemons={selectedPokemons} setSelectedPokemons={setSelectedPokemons} removePokemon={removePokemon} />

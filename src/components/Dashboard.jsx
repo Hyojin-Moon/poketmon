@@ -74,7 +74,7 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const Dashboard = ({ selectedPokemons, setSelectedPokemons, removePokemon }) => {
+const Dashboard = ({ selectedPokemons, removePokemon }) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
 

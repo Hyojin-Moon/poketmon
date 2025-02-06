@@ -45,6 +45,7 @@ const Button = styled.button`
 `;
 const PokemonCard = ({ pokemon, addPokemon }) => {
 
+  
   const navigate = useNavigate();
 
   const handleCardClick = () => {

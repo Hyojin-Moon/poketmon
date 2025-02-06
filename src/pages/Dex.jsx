@@ -35,7 +35,7 @@ const Dex = () => {
 
   return (
     <DexContainer>
-      <Dashboard selectedPokemons={selectedPokemons} setSelectedPokemons={setSelectedPokemons} removePokemon={removePokemon}/>
+      <Dashboard selectedPokemons={selectedPokemons} setSelectedPokemons={setSelectedPokemons} removePokemon={removePokemon} />
       <PokemonList pokemonData={pokemonData} addPokemon={addPokemon}/>
     </DexContainer>
   )

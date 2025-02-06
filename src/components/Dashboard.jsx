@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+import PokemonProvider from '../context/PokemonContext';
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -77,16 +78,18 @@ const Dashboard = ({ selectedPokemons, setSelectedPokemons, removePokemon }) => 
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
   
+  //데이터 가져오기
   useEffect(() => {
     const savedPokemons = JSON.parse(localStorage.getItem("pokemon")) || [];
     if (savedPokemons.length > 0) {
       setSelectedPokemons(savedPokemons);
     }
   }, []);
-
+  
+  //데이터 저장하기
   useEffect(() => {
     localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
-  }, [selectedPokemons]);
+  },[selectedPokemons]);
 
   // 기본 포켓몬 이미지를 6개로 설정
   const filledPokemons = selectedPokemons.slice(); // 복사
@@ -94,6 +97,7 @@ const Dashboard = ({ selectedPokemons, setSelectedPokemons, removePokemon }) => 
     filledPokemons.push(null); //빈칸으로 슬롯 추가
   }
 
+  // 페이지이동
   const navigate = useNavigate();
 
   const handleCardClick = (pokemon) => {

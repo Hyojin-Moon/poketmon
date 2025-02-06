@@ -78,6 +78,7 @@ const PokemonDetail = () => {
   const [searchParams] = useSearchParams();
   const pokemonId = searchParams.get("id"); //쿼리스트링의 객체로 들어온 아이디값
   const navigate = useNavigate();
+  
 
   // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
   // 정보 뿌려주기
@@ -94,7 +95,7 @@ const PokemonDetail = () => {
     <BackButton onClick={()=>{
       navigate("/dex");
     }}>뒤로 가기</BackButton>
-    <AddDeleteButton>삭제/추가</AddDeleteButton>
+    <AddDeleteButton>추가</AddDeleteButton>
   </Container>
 );
 };

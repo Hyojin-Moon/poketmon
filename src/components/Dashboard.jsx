@@ -3,7 +3,7 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import PokemonProvider from '../context/PokemonContext.jsx';
+import PokemonProvider, { PokemonContext } from '../context/PokemonContext.jsx';
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -74,8 +74,9 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const Dashboard = ({ selectedPokemons, removePokemon }) => {
-
+const Dashboard = () => {
+  
+  const { selectedPokemons, removePokemon } = useContext(PokemonContext);
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
 
   // 기본 포켓몬 이미지를 6개로 설정
@@ -100,7 +101,7 @@ const Dashboard = ({ selectedPokemons, removePokemon }) => {
 
           return (
             <PokemonSlot
-              onClick={()=>handleCardClick(pokemon)}
+              onClick={() => handleCardClick(pokemon)}
               key={isEmpty ? `empty-${index}` : pokemon.id}>
               <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
               <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>

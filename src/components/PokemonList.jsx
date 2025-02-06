@@ -2,6 +2,8 @@
 
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
+import { useContext } from 'react';
+import { PokemonContext } from '../context/PokemonContext';
 
 const ListContainer = styled.div`
   display: flex;
@@ -24,14 +26,16 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const PokemonList = ({ pokemonData, addPokemon }) => {
+const PokemonList = () => {
+
+  const { pokemonData } = useContext(PokemonContext);
 
   return (
     <ListContainer>
       <Container>
-      {pokemonData.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon} />
-      ))}
+        {pokemonData.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
       </Container>
     </ListContainer>
   );

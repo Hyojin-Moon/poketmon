@@ -3,7 +3,7 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import PokemonProvider from '../context/PokemonContext';
+import PokemonProvider from '../context/PokemonContext.jsx';
 
 const DashboardContainer = styled.div`
   display: flex;

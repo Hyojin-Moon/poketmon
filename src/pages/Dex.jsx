@@ -13,7 +13,7 @@ const DexContainer = styled.div`
 `
 
 const Dex = () => {
-  //Dex에서 상태관리하고 props로 List에 내려주기
+
   const [pokemonData, setPokemonData] = useState(MOCK_DATA);
   const [selectedPokemons, setSelectedPokemons] = useState([]);
 
@@ -41,4 +41,4 @@ const Dex = () => {
   )
 }
 
-export default Dex
+export default Dex;

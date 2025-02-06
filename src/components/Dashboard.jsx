@@ -77,19 +77,6 @@ const Button = styled.button`
 const Dashboard = ({ selectedPokemons, setSelectedPokemons, removePokemon }) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
-  
-  //데이터 가져오기
-  useEffect(() => {
-    const savedPokemons = JSON.parse(localStorage.getItem("pokemon")) || [];
-    if (savedPokemons.length > 0) {
-      setSelectedPokemons(savedPokemons);
-    }
-  }, []);
-  
-  //데이터 저장하기
-  useEffect(() => {
-    localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
-  },[selectedPokemons]);
 
   // 기본 포켓몬 이미지를 6개로 설정
   const filledPokemons = selectedPokemons.slice(); // 복사

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dashboard from '../components/Dashboard';
 import PokemonList from '../components/PokemonList';
 import styled from 'styled-components';
@@ -15,7 +15,9 @@ const DexContainer = styled.div`
 const Dex = () => {
 
   const [pokemonData, setPokemonData] = useState(MOCK_DATA);
-  const [selectedPokemons, setSelectedPokemons] = useState([]);
+  const [selectedPokemons, setSelectedPokemons] = useState(() => {
+    return JSON.parse(localStorage.getItem("pokemon")) || [];
+  });
 
   //포켓몬 추가 함수
   const addPokemon = (pokemon) => {
@@ -26,13 +28,18 @@ const Dex = () => {
     } else {
       alert("최대 6마리까지만 잡을 수 있습니다!");
     }
+
   };
 
   // 포켓몬 삭제 함수
   const removePokemon = (id) => {
     setSelectedPokemons(selectedPokemons.filter(pokemon => pokemon.id !== id));
-  };
 
+  };
+  //데이터 저장하기
+  useEffect(() => {
+    localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
+  },[selectedPokemons]);
   return (
     <DexContainer>
       <Dashboard selectedPokemons={selectedPokemons} setSelectedPokemons={setSelectedPokemons} removePokemon={removePokemon} />

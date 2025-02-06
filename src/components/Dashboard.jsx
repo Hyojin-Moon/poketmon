@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -40,6 +42,7 @@ const PokemonSlot = styled.div`
   min-width: 120px;
   min-height: 150px;
   background-color: #f9f9f9;
+  cursor: pointer;
 `;
 const PokemonImg = styled.img`
   width: 80px;
@@ -70,9 +73,21 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const Dashboard = ({ selectedPokemons, removePokemon }) => {
+const Dashboard = ({ selectedPokemons, setSelectedPokemons, removePokemon }) => {
 
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+  
+  useEffect(() => {
+    const savedPokemons = JSON.parse(localStorage.getItem("pokemon")) || [];
+    if (savedPokemons.length > 0) {
+      setSelectedPokemons(savedPokemons);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
+  }, [selectedPokemons]);
+
   // 기본 포켓몬 이미지를 6개로 설정
   const filledPokemons = selectedPokemons.slice(); // 복사
   while (filledPokemons.length < 6) {

@@ -24,15 +24,16 @@ function PokemonProvider ({children}) {
   // 포켓몬 삭제 함수
   const removePokemon = (id) => {
     setSelectedPokemons(selectedPokemons.filter(pokemon => pokemon.id !== id));
-
   };
+  
   //데이터 저장하기
   useEffect(() => {
     localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
   },[selectedPokemons]);
 
   return <PokemonContext.Provider value={
-    { pokemonData, selectedPokemons, addPokemon, removePokemon}}>
+    { pokemonData, selectedPokemons, addPokemon, removePokemon}}
+    >
     {children}
   </PokemonContext.Provider>
 };

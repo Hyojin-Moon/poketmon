@@ -92,7 +92,7 @@ const PokemonDetail = () => {
 
   const handleAddDeleteClick = () => {
     if (isAlreadyAdded) {
-      removePokemon(detailPokemonData);
+      removePokemon(detailPokemonData.id); // 컨텍스트에서 id를 필터링
     } else {
       addPokemon(detailPokemonData);
     }

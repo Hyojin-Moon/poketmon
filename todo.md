@@ -1,4 +1,4 @@
-- 과제 로드맵 기준 to-do : ContextAPI를 활용한 리팩토링
+- 과제 로드맵 기준 to-do : RTK
 - Git 링크 공유 : https://github.com/Hyojin-Moon/poketmon.git
 - 현재 구현 정도(100%가 전체 기능 완료 기준) : 대쉬보드 데이터유지기능
 - 목표(다음 체크 타임까지): ContextAPI로 리팩토링

@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import MOCK_DATA from "../data/pokemonData";
 import styled from "styled-components";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { PokemonContext } from "../context/PokemonContext";
 
 const Container = styled.div`
@@ -77,7 +77,6 @@ const AddDeleteButton = styled.button`
 `
 const PokemonDetail = () => {
 
-  const [isAdded, setIsAdded] = useState(false);
   const [searchParams] = useSearchParams();
   const pokemonId = searchParams.get("id"); //쿼리스트링의 객체로 들어온 아이디값
   const navigate = useNavigate();
@@ -86,34 +85,31 @@ const PokemonDetail = () => {
   // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
   // 정보 뿌려주기
   // 쿼리파라미터는 무조건 문자열임 / 문자배열 / undefined
-  const pokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
+  const detailPokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
 
   //선택된 목록에 현재 포켓몬 있는지 확인
-  const isAlreadyAdded = selectedPokemons.some((e) => e.id === pokemonData.id);
+  const isAlreadyAdded = selectedPokemons.some((e) => e.id === detailPokemonData.id);
 
   const handleAddDeleteClick = () => {
     if (isAlreadyAdded) {
-      removePokemon(pokemonData);
+      removePokemon(detailPokemonData);
     } else {
-      addPokemon(pokemonData);
-      
+      addPokemon(detailPokemonData);
     }
-    setIsAdded(!isAdded);
   };
-
 
   return (
     <Container>
-    <PokemonImage src={pokemonData.img_url} alt={pokemonData.korean_name} />
-    <PokemonName>{pokemonData.korean_name}</PokemonName>
-    <PokemonType>타입 : {pokemonData.types}</PokemonType>
-    <Description>{pokemonData.description}</Description>
-    <BackButton onClick={()=>{
-      navigate("/dex");
-    }}>뒤로 가기</BackButton>
-    <AddDeleteButton onClick={handleAddDeleteClick}>
-      {!isAdded ? "추가" : "삭제"}</AddDeleteButton>
-  </Container>
+      <PokemonImage src={detailPokemonData.img_url} alt={detailPokemonData.korean_name} />
+      <PokemonName>{detailPokemonData.korean_name}</PokemonName>
+      <PokemonType>타입 : {detailPokemonData.types}</PokemonType>
+      <Description>{detailPokemonData.description}</Description>
+      <BackButton onClick={() => {
+        navigate("/dex");
+      }}>뒤로 가기</BackButton>
+      <AddDeleteButton onClick={handleAddDeleteClick}>
+        {isAlreadyAdded ? "삭제" : "추가"}</AddDeleteButton>
+    </Container>
   );
 };
 

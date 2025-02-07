@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import PokemonProvider, { PokemonContext } from '../context/PokemonContext.jsx';
+import  { PokemonContext } from '../context/PokemonContext.jsx';
 
 const DashboardContainer = styled.div`
   display: flex;

@@ -1,4 +1,4 @@
-import PokemonProvider from './context/PokemonContext.jsx'
+import PokemonProvider from './context/PokemonContext.jsx';
 import './css/reset.css'
 import Router from './shared/Router.jsx'
 
@@ -8,7 +8,7 @@ function App() {
       <Router />
     </PokemonProvider>
   )
-  
+
 }
 
-export default App
+export default App;

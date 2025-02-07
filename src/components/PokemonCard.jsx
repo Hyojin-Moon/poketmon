@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { PokemonContext } from '../context/PokemonContext';
 
 const CardContainer = styled.div`
   width: 120px;
@@ -43,9 +45,9 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const PokemonCard = ({ pokemon, addPokemon }) => {
+const PokemonCard = ({ pokemon }) => {
 
-  
+  const { addPokemon } = useContext(PokemonContext);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -59,9 +61,9 @@ const PokemonCard = ({ pokemon, addPokemon }) => {
 
   return (
     <CardContainer onClick={handleCardClick}>
-        <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
-        <PokemonName>{pokemon.korean_name}</PokemonName>
-        <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
+      <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
+      <PokemonName>{pokemon.korean_name}</PokemonName>
+      <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
       <Button onClick={handleButtonClick}>추가</Button>
     </CardContainer>
   )

@@ -1,6 +1,8 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import MOCK_DATA from "../data/pokemonData";
 import styled from "styled-components";
+import { useContext, useState } from "react";
+import { PokemonContext } from "../context/PokemonContext";
 
 const Container = styled.div`
   display: flex;
@@ -78,26 +80,37 @@ const PokemonDetail = () => {
   const [searchParams] = useSearchParams();
   const pokemonId = searchParams.get("id"); //쿼리스트링의 객체로 들어온 아이디값
   const navigate = useNavigate();
-  
+  const { selectedPokemons, addPokemon, removePokemon } = useContext(PokemonContext);
 
   // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
   // 정보 뿌려주기
   // 쿼리파라미터는 무조건 문자열임 / 문자배열 / undefined
-  const pokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
+  const detailPokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
 
+  //선택된 목록에 현재 포켓몬 있는지 확인
+  const isAlreadyAdded = selectedPokemons.some((e) => e.id === detailPokemonData.id);
+
+  const handleAddDeleteClick = () => {
+    if (isAlreadyAdded) {
+      removePokemon(detailPokemonData.id); // 컨텍스트에서 id를 필터링
+    } else {
+      addPokemon(detailPokemonData);
+    }
+  };
 
   return (
     <Container>
-    <PokemonImage src={pokemonData.img_url} alt={pokemonData.korean_name} />
-    <PokemonName>{pokemonData.korean_name}</PokemonName>
-    <PokemonType>타입 : {pokemonData.types}</PokemonType>
-    <Description>{pokemonData.description}</Description>
-    <BackButton onClick={()=>{
-      navigate("/dex");
-    }}>뒤로 가기</BackButton>
-    <AddDeleteButton>추가</AddDeleteButton>
-  </Container>
-);
+      <PokemonImage src={detailPokemonData.img_url} alt={detailPokemonData.korean_name} />
+      <PokemonName>{detailPokemonData.korean_name}</PokemonName>
+      <PokemonType>타입 : {detailPokemonData.types}</PokemonType>
+      <Description>{detailPokemonData.description}</Description>
+      <BackButton onClick={() => {
+        navigate("/dex");
+      }}>뒤로 가기</BackButton>
+      <AddDeleteButton onClick={handleAddDeleteClick}>
+        {isAlreadyAdded ? "삭제" : "추가"}</AddDeleteButton>
+    </Container>
+  );
 };
 
 export default PokemonDetail;

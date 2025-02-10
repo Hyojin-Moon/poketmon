@@ -13,14 +13,14 @@ const PokemonDetail = () => {
   const { selectedPokemons, pokemonData } = useSelector(state => state.pokemon);
   const dispatch = useDispatch();
 
-  // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
-  // 정보 뿌려주기
-  // 쿼리파라미터는 무조건 문자열임 / 문자배열 / undefined
+  // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면 정보 뿌려주기
+  // 쿼리파라미터는 무조건 문자열 / 문자배열 / undefined
   const detailPokemonData = pokemonData.find((e) => e.id.toString() === pokemonId);
 
   //선택된 목록에 현재 포켓몬 있는지 확인
   const isAlreadyAdded = selectedPokemons.some((e) => e.id === detailPokemonData.id);
 
+  // 추가/삭제 함수
   const handleAddDeleteClick = () => {
     if (isAlreadyAdded) {
       dispatch(removePokemon(detailPokemonData.id)); // 컨텍스트에서 id를 필터링

@@ -1,17 +1,13 @@
 /* eslint-disable react/prop-types */
-
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
-import { useSelector } from 'react-redux';
+import MOCK_DATA from '../data/pokemonData';
 
 const PokemonList = () => {
-
-  const pokemonData = useSelector(state => state.pokemon.pokemonData);
-
   return (
     <ListContainer>
       <Container>
-        {pokemonData.map((pokemon) => (
+        {MOCK_DATA.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </Container>
@@ -19,6 +15,7 @@ const PokemonList = () => {
   );
 };
 export default PokemonList;
+
 
 const ListContainer = styled.div`
   display: flex;

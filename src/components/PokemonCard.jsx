@@ -9,10 +9,12 @@ const PokemonCard = ({ pokemon }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // 포켓몬 클릭시 이동
   const handleCardClick = () => {
     navigate(`/pokemon?id=${pokemon.id}`);
   };
 
+  // 카드의 버튼(추가) 클릭시 슬롯에 추가
   const handleButtonClick = (e) => {
     e.stopPropagation();
     dispatch(addPokemon(pokemon));

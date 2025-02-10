@@ -5,6 +5,7 @@ const Home = () => {
 
   const navigate = useNavigate();
   const logoImg = "https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png";
+  
   return (
     <HomeContainer>
       <LogoImg src={logoImg} alt="" />

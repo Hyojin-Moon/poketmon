@@ -5,7 +5,6 @@ import PokemonDetail from "../pages/PokemonDetail.jsx";
 
 const Router = () => {
 
-
   return (
     <BrowserRouter>
       <Routes>

@@ -27,9 +27,6 @@ const pokemonSlice = createSlice({
       state.selectedPokemons = state.selectedPokemons.filter(pokemon => pokemon.id !== action.payload)
       localStorage.setItem("pokemon", JSON.stringify(state.selectedPokemons));
     },
-    setPokemonData: (state, action) => {
-      state.pokemonData = action.payload;
-    },
   }
 });
 

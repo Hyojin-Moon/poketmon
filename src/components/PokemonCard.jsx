@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { PokemonContext } from '../context/PokemonContext';
+import { useDispatch } from 'react-redux';
+import { addPokemon } from '../redux/slices/pokemonSlice';
 
 const CardContainer = styled.div`
   width: 120px;
@@ -47,7 +49,7 @@ const Button = styled.button`
 `;
 const PokemonCard = ({ pokemon }) => {
 
-  const { addPokemon } = useContext(PokemonContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -56,7 +58,7 @@ const PokemonCard = ({ pokemon }) => {
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
-    addPokemon(pokemon);
+    dispatch(addPokemon(pokemon));
   };
 
   return (

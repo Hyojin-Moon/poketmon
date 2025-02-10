@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import  { PokemonContext } from '../context/PokemonContext.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { removePokemon } from '../redux/slices/pokemonSlice.js';
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -74,7 +76,9 @@ const Button = styled.button`
 `;
 const Dashboard = () => {
   
-  const { selectedPokemons, removePokemon } = useContext(PokemonContext);
+  const selectedPokemons = useSelector((state) => state.pokemon.selectedPokemons);
+  const dispatch = useDispatch();
+
   const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
 
   // 기본 포켓몬 이미지를 6개로 설정
@@ -106,7 +110,7 @@ const Dashboard = () => {
               <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
               {!isEmpty && <Button onClick={(e) => {
                 e.stopPropagation();
-                removePokemon(pokemon.id)
+                dispatch(removePokemon(pokemon.id));
               }}>삭제</Button>}
             </PokemonSlot>
           );

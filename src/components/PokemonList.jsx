@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
 import { useContext } from 'react';
 import { PokemonContext } from '../context/PokemonContext';
+import { useSelector } from 'react-redux';
 
 const ListContainer = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const Container = styled.div`
 
 const PokemonList = () => {
 
-  const { pokemonData } = useContext(PokemonContext);
+  const pokemonData = useSelector(state => state.pokemon.pokemonData);
 
   return (
     <ListContainer>

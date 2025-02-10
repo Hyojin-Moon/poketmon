@@ -1,6 +1,22 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+const Home = () => {
+
+  const navigate = useNavigate();
+  const logoImg = "https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png";
+  return (
+    <HomeContainer>
+      <LogoImg src={logoImg} alt="" />
+    <Button onClick={()=>{
+      navigate("/dex");
+    }}>포켓몬 도감 시작하기</Button>
+    </HomeContainer>
+  )
+}
+
+export default Home;
+
 const HomeContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -25,19 +41,3 @@ const Button = styled.button`
     background-color: #ff5555;
   }
 `;
-
-const Home = () => {
-
-  const navigate = useNavigate();
-  const logoImg = "https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png";
-  return (
-    <HomeContainer>
-      <LogoImg src={logoImg} alt="" />
-    <Button onClick={()=>{
-      navigate("/dex");
-    }}>포켓몬 도감 시작하기</Button>
-    </HomeContainer>
-  )
-}
-
-export default Home;

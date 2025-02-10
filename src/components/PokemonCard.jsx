@@ -1,8 +1,34 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { PokemonContext } from '../context/PokemonContext';
+import { useDispatch } from 'react-redux';
+import { addPokemon } from '../redux/slices/pokemonSlice';
+
+const PokemonCard = ({ pokemon }) => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/pokemon?id=${pokemon.id}`);
+  };
+
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    dispatch(addPokemon(pokemon));
+  };
+
+  return (
+    <CardContainer onClick={handleCardClick}>
+      <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
+      <PokemonName>{pokemon.korean_name}</PokemonName>
+      <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
+      <Button onClick={handleButtonClick}>추가</Button>
+    </CardContainer>
+  )
+};
+
+export default PokemonCard;
 
 const CardContainer = styled.div`
   width: 120px;
@@ -45,28 +71,3 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const PokemonCard = ({ pokemon }) => {
-
-  const { addPokemon } = useContext(PokemonContext);
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    navigate(`/pokemon?id=${pokemon.id}`);
-  };
-
-  const handleButtonClick = (e) => {
-    e.stopPropagation();
-    addPokemon(pokemon);
-  };
-
-  return (
-    <CardContainer onClick={handleCardClick}>
-      <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
-      <PokemonName>{pokemon.korean_name}</PokemonName>
-      <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
-      <Button onClick={handleButtonClick}>추가</Button>
-    </CardContainer>
-  )
-};
-
-export default PokemonCard

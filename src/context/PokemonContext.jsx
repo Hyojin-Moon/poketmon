@@ -3,10 +3,12 @@ import MOCK_DATA from "../data/pokemonData";
 
 export const PokemonContext = createContext();
 
-function PokemonProvider ({children}) {
+function PokemonProvider({ children }) {
+
   const [pokemonData, setPokemonData] = useState(MOCK_DATA);
   const [selectedPokemons, setSelectedPokemons] = useState(() => {
     return JSON.parse(localStorage.getItem("pokemon")) || [];
+    
   });
 
   //포켓몬 추가 함수
@@ -25,15 +27,15 @@ function PokemonProvider ({children}) {
   const removePokemon = (id) => {
     setSelectedPokemons(selectedPokemons.filter(pokemon => pokemon.id !== id));
   };
-  
+
   //데이터 저장하기
   useEffect(() => {
     localStorage.setItem("pokemon", JSON.stringify(selectedPokemons));
-  },[selectedPokemons]);
+  }, [selectedPokemons]);
 
   return <PokemonContext.Provider value={
-    { pokemonData, selectedPokemons, addPokemon, removePokemon}}
-    >
+    { pokemonData, selectedPokemons, addPokemon, removePokemon }}
+  >
     {children}
   </PokemonContext.Provider>
 };

@@ -1,7 +1,56 @@
-import { useContext } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
-import  { PokemonContext } from '../context/PokemonContext.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { removePokemon } from '../redux/slices/pokemonSlice.js';
+
+const Dashboard = () => {
+  
+  const selectedPokemons = useSelector((state) => state.pokemon.selectedPokemons);
+  const dispatch = useDispatch();
+
+  const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+
+  // 기본 포켓몬 이미지를 6개로 설정
+  const filledPokemons = selectedPokemons.slice(); // 복사
+  while (filledPokemons.length < 6) {
+    filledPokemons.push(null); //빈칸으로 슬롯 추가
+  }
+
+  // 페이지이동
+  const navigate = useNavigate();
+
+  const handleCardClick = (pokemon) => {
+    navigate(`/pokemon?id=${pokemon.id}`);
+  };
+
+  return (
+    <DashboardContainer>
+      <Title>나만의 포켓몬</Title>
+      <SlotContainer>
+        {filledPokemons.map((pokemon, index) => {
+          const isEmpty = pokemon === null; // null 체크용 변수
+
+          return (
+            <PokemonSlot
+              onClick={() => handleCardClick(pokemon)}
+              key={isEmpty ? `empty-${index}` : pokemon.id}>
+              <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
+              <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
+              <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
+              {!isEmpty && <Button onClick={(e) => {
+                e.stopPropagation();
+                dispatch(removePokemon(pokemon.id));
+              }}>삭제</Button>}
+            </PokemonSlot>
+          );
+        })}
+      </SlotContainer>
+    </DashboardContainer>
+  );
+};
+
+export default Dashboard;
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -72,48 +121,3 @@ const Button = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const Dashboard = () => {
-  
-  const { selectedPokemons, removePokemon } = useContext(PokemonContext);
-  const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
-
-  // 기본 포켓몬 이미지를 6개로 설정
-  const filledPokemons = selectedPokemons.slice(); // 복사
-  while (filledPokemons.length < 6) {
-    filledPokemons.push(null); //빈칸으로 슬롯 추가
-  }
-
-  // 페이지이동
-  const navigate = useNavigate();
-
-  const handleCardClick = (pokemon) => {
-    navigate(`/pokemon?id=${pokemon.id}`);
-  };
-
-  return (
-    <DashboardContainer>
-      <Title>나만의 포켓몬</Title>
-      <SlotContainer>
-        {filledPokemons.map((pokemon, index) => {
-          const isEmpty = pokemon === null; // null 체크용 변수
-
-          return (
-            <PokemonSlot
-              onClick={() => handleCardClick(pokemon)}
-              key={isEmpty ? `empty-${index}` : pokemon.id}>
-              <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
-              <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
-              <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
-              {!isEmpty && <Button onClick={(e) => {
-                e.stopPropagation();
-                removePokemon(pokemon.id)
-              }}>삭제</Button>}
-            </PokemonSlot>
-          );
-        })}
-      </SlotContainer>
-    </DashboardContainer>
-  );
-};
-
-export default Dashboard;

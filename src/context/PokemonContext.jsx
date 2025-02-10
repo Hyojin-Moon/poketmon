@@ -8,7 +8,7 @@ function PokemonProvider({ children }) {
   const [pokemonData, setPokemonData] = useState(MOCK_DATA);
   const [selectedPokemons, setSelectedPokemons] = useState(() => {
     return JSON.parse(localStorage.getItem("pokemon")) || [];
-    
+
   });
 
   //포켓몬 추가 함수

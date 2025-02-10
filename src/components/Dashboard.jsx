@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removePokemon } from '../redux/slices/pokemonSlice.js';
 
 const Dashboard = () => {
-  
+
   const selectedPokemons = useSelector((state) => state.pokemon.selectedPokemons);
   const dispatch = useDispatch();
 

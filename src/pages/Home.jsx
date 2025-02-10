@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <HomeContainer>
       <LogoImg src={logoImg} alt="" />
-    <Button onClick={()=>{
-      navigate("/dex");
-    }}>포켓몬 도감 시작하기</Button>
+      <Button onClick={() => {
+        navigate("/dex");
+      }}>포켓몬 도감 시작하기</Button>
     </HomeContainer>
   )
 }

@@ -4,8 +4,8 @@ import MOCK_DATA from "../../data/pokemonData";
 
 const initialState = {
   pokemonData: MOCK_DATA,
-  selectedPokemons: JSON.parse(localStorage.getItem("pokemon")) || []
-}
+  selectedPokemons: JSON.parse(localStorage.getItem("pokemon")) || [],
+};
 
 const pokemonSlice = createSlice({
   name: "pokemon",
@@ -30,7 +30,7 @@ const pokemonSlice = createSlice({
       state.pokemonData = action.payload;
     },
   }
-})
+});
 
 export const { addPokemon, removePokemon, setPokemonData, pokemonData } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

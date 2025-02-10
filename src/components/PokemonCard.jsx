@@ -31,7 +31,8 @@ const PokemonCard = ({ pokemon }) => {
 export default PokemonCard;
 
 const CardContainer = styled.div`
-  width: 120px;
+  width: 100%;
+  max-width: 120px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
@@ -45,6 +46,7 @@ const CardContainer = styled.div`
     transform: scale(1.05); 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
+
 `;
 
 const PokemonImage = styled.img`

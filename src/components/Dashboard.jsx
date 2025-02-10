@@ -78,6 +78,18 @@ const SlotContainer = styled.div`
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   width: 100%;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+  }
 `;
 const PokemonSlot = styled.div`
   display: flex;

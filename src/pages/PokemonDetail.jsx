@@ -3,6 +3,7 @@ import MOCK_DATA from "../data/pokemonData";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { PokemonContext } from "../context/PokemonContext";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -80,12 +81,14 @@ const PokemonDetail = () => {
   const [searchParams] = useSearchParams();
   const pokemonId = searchParams.get("id"); //쿼리스트링의 객체로 들어온 아이디값
   const navigate = useNavigate();
-  const { selectedPokemons, addPokemon, removePokemon } = useContext(PokemonContext);
+
+  //Redux 스토어에서 데이터 가져오기
+  const { selectedPokemons, addPokemon, removePokemon, pokemonData } = useSelector(state => state.pokemon);
 
   // searchParams의 pokemonId값과 MOCK_DATA의 id를 비교하여 일치하면
   // 정보 뿌려주기
   // 쿼리파라미터는 무조건 문자열임 / 문자배열 / undefined
-  const detailPokemonData = MOCK_DATA.find((e) => e.id.toString() === pokemonId);
+  const detailPokemonData = pokemonData.find((e) => e.id.toString() === pokemonId);
 
   //선택된 목록에 현재 포켓몬 있는지 확인
   const isAlreadyAdded = selectedPokemons.some((e) => e.id === detailPokemonData.id);

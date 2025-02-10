@@ -47,7 +47,6 @@
 │   ├── pokemonData.js (포켓몬 더미 데이터)
 │
 ├── App.jsx
-└── index.jsx
 ```
 
 ## 🛠️ 사용 기술

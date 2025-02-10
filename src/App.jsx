@@ -1,12 +1,13 @@
-import PokemonProvider from './context/PokemonContext.jsx';
+import { Provider } from 'react-redux';
 import './css/reset.css'
 import Router from './shared/Router.jsx'
+import store from './redux/config/configStore.js';
 
 function App() {
   return (
-    <PokemonProvider>
+    <Provider store={store}>
       <Router />
-    </PokemonProvider>
+    </Provider>
   )
 
 }

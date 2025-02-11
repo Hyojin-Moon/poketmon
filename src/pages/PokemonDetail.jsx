@@ -30,27 +30,28 @@ const PokemonDetail = () => {
   };
 
   return (
-    <Container>
-      <PokemonImage src={detailPokemonData.img_url} alt={detailPokemonData.korean_name} />
-      <PokemonName>{detailPokemonData.korean_name}</PokemonName>
-      <PokemonType>타입 : {detailPokemonData.types}</PokemonType>
-      <Description>{detailPokemonData.description}</Description>
-      <BackButton onClick={() => {
+    <StContainer>
+      <StPokemonImage src={detailPokemonData.img_url} alt={detailPokemonData.korean_name} />
+      <StPokemonName>{detailPokemonData.korean_name}</StPokemonName>
+      <StPokemonType>타입 : {detailPokemonData.types}</StPokemonType>
+      <StDescription>{detailPokemonData.description}</StDescription>
+      <StBackButton onClick={() => {
         navigate("/dex");
-      }}>뒤로 가기</BackButton>
-      <AddDeleteButton onClick={handleAddDeleteClick}>
-        {isAlreadyAdded ? "삭제" : "추가"}</AddDeleteButton>
-    </Container>
+      }}>뒤로 가기</StBackButton>
+      <StAddDeleteButton onClick={handleAddDeleteClick}>
+        {isAlreadyAdded ? "삭제" : "추가"}</StAddDeleteButton>
+    </StContainer>
   );
 };
 
 export default PokemonDetail;
 
 
-const Container = styled.div`
+const StContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   background-color: #f8f9fa;
   border-radius: 10px;
@@ -59,7 +60,7 @@ const Container = styled.div`
   margin: 20px auto;
 `;
 
-const PokemonImage = styled.img`
+const StPokemonImage = styled.img`
   width: 200px;
   height: 200px;
   object-fit: contain;
@@ -71,26 +72,26 @@ const PokemonImage = styled.img`
 }
 `;
 
-const PokemonName = styled.h2`
+const StPokemonName = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 `;
 
-const PokemonType = styled.div`
+const StPokemonType = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
 `;
 
-const Description = styled.p`
+const StDescription = styled.p`
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
   color: #333;
 `;
 
-const BackButton = styled.button`
+const StBackButton = styled.button`
   margin-top: 10px;
   padding: 10px 16px;
   font-size: 16px;
@@ -104,7 +105,7 @@ const BackButton = styled.button`
     background-color: #ff4d4d;
   }
 `;
-const AddDeleteButton = styled.button`
+const StAddDeleteButton = styled.button`
   margin-top: 10px;
   padding: 10px 16px;
   font-size: 16px;

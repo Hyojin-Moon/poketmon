@@ -7,28 +7,28 @@ const Home = () => {
   const logoImg = "https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png";
   
   return (
-    <HomeContainer>
-      <LogoImg src={logoImg} alt="" />
-      <Button onClick={() => {
+    <StHomeContainer>
+      <StLogoImg src={logoImg} alt="" />
+      <StStartButton onClick={() => {
         navigate("/dex");
-      }}>포켓몬 도감 시작하기</Button>
-    </HomeContainer>
+      }}>포켓몬 도감 시작하기</StStartButton>
+    </StHomeContainer>
   )
 }
 
 export default Home;
 
-const HomeContainer = styled.div`
+const StHomeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
 `;
-const LogoImg = styled.img`
+const StLogoImg = styled.img`
   width: 600px;
 `;
-const Button = styled.button`
+const StStartButton = styled.button`
   margin-top: 15px;
   padding: 10px 20px;
   font-size: 16px;

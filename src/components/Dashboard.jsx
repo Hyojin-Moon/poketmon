@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux';
 import { removePokemon } from '../redux/slices/pokemonSlice.js';
-
+import { StContainer, StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js'
 const Dashboard = () => {
 
   const selectedPokemons = useSelector((state) => state.pokemon.selectedPokemons);
@@ -25,55 +25,44 @@ const Dashboard = () => {
   };
 
   return (
-    <DashboardContainer>
-      <Title>나만의 포켓몬</Title>
-      <SlotContainer>
+    <StDashboardContainer>
+      <h2>나만의 포켓몬</h2>
+      <StSlotContainer>
         {filledPokemons.map((pokemon, index) => {
           const isEmpty = pokemon === null; // null 체크용 변수
 
           return (
-            <PokemonSlot
+            <StPokemonSlot
               onClick={() => handleCardClick(pokemon)}
               key={isEmpty ? `empty-${index}` : pokemon.id}>
-              <PokemonImg src={isEmpty ? imgDefault : pokemon.img_url} />
-              <PokemonName>{isEmpty ? null : pokemon.korean_name}</PokemonName>
-              <PokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</PokemonID>
-              {!isEmpty && <Button onClick={(e) => {
+              <StPokemonImage src={isEmpty ? imgDefault : pokemon.img_url} />
+              <StPokemonName>{isEmpty ? null : pokemon.korean_name}</StPokemonName>
+              <StPokemonID>{isEmpty ? null : `No. 00${pokemon.id}`}</StPokemonID>
+              {!isEmpty && <StButton onClick={(e) => {
                 e.stopPropagation();
                 dispatch(removePokemon(pokemon.id));
-              }}>삭제</Button>}
-            </PokemonSlot>
+              }}>삭제</StButton>}
+            </StPokemonSlot>
           );
         })}
-      </SlotContainer>
-    </DashboardContainer>
+      </StSlotContainer>
+    </StDashboardContainer>
   );
 };
 
 export default Dashboard;
 
-const DashboardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 960px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  background-color: #fefefe;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-`;
-const Title = styled.h2`
+const StDashboardContainer = styled(StContainer)`
+
+  & h2 {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
   color: #9b2d2d;
+  }
 `;
 
-const SlotContainer = styled.div`
+const StSlotContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
@@ -91,7 +80,7 @@ const SlotContainer = styled.div`
     gap: 5px;
   }
 `;
-const PokemonSlot = styled.div`
+const StPokemonSlot = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,33 +92,4 @@ const PokemonSlot = styled.div`
   min-height: 150px;
   background-color: #f9f9f9;
   cursor: pointer;
-`;
-const PokemonImg = styled.img`
-  width: 80px;
-  height: 80px;
-`;
-
-const PokemonName = styled.p`
-  font-weight: bold;
-  margin: 5px 0;
-`;
-
-const PokemonID = styled.p`
-  font-size: 14px;
-  color: #666;
-`;
-
-const Button = styled.button`
-  margin-top: 8px;
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  background-color: #ff6b6b;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #ff4d4d;
-  }
 `;

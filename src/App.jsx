@@ -23,7 +23,6 @@ function App() {
         theme="dark" />
     </Provider>
   )
-
 }
 
 export default App;

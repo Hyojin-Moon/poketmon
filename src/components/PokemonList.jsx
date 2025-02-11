@@ -5,19 +5,19 @@ import MOCK_DATA from '../data/pokemonData';
 
 const PokemonList = () => {
   return (
-    <ListContainer>
-      <Container>
+    <StListContainer>
+      <StContainer>
         {MOCK_DATA.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
-      </Container>
-    </ListContainer>
+      </StContainer>
+    </StListContainer>
   );
 };
 export default PokemonList;
 
 
-const ListContainer = styled.div`
+const StListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +30,7 @@ const ListContainer = styled.div`
   border-radius: 10px;
   background-color: #fefefe;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  
   @media (max-width: 960px) {
     max-width: 90%; /* 너비를 줄여서 화면에 맞춤 */
     padding: 15px;
@@ -46,8 +47,10 @@ const ListContainer = styled.div`
     padding: 5px;
     margin: 5px auto;
   }
+
+
 `;
-const Container = styled.div`
+const StContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

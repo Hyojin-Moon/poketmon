@@ -5,16 +5,16 @@ import styled from 'styled-components';
 const Dex = () => {
 
   return (
-    <DexContainer>
+    <StDexContainer>
       <Dashboard  />
       <PokemonList />
-    </DexContainer>
+    </StDexContainer>
   )
 }
 
 export default Dex;
 
-const DexContainer = styled.div`
+const StDexContainer = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;

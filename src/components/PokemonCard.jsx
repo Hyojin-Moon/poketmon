@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { addPokemon } from '../redux/slices/pokemonSlice';
+import { StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js'
 
 const PokemonCard = ({ pokemon }) => {
 
@@ -21,18 +22,18 @@ const PokemonCard = ({ pokemon }) => {
   };
 
   return (
-    <CardContainer onClick={handleCardClick}>
-      <PokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
-      <PokemonName>{pokemon.korean_name}</PokemonName>
-      <PokemonID>{`No. 00${pokemon.id}`}</PokemonID>
-      <Button onClick={handleButtonClick}>추가</Button>
-    </CardContainer>
+    <StCardContainer onClick={handleCardClick}>
+      <StPokemonImage src={pokemon.img_url} alt={pokemon.korean_name} />
+      <StPokemonName>{pokemon.korean_name}</StPokemonName>
+      <StPokemonID>{`No. 00${pokemon.id}`}</StPokemonID>
+      <StButton onClick={handleButtonClick}>추가</StButton>
+    </StCardContainer>
   )
 };
 
 export default PokemonCard;
 
-const CardContainer = styled.div`
+const StCardContainer = styled.div`
   width: 100%;
   max-width: 120px;
   border: 1px solid #ccc;
@@ -49,29 +50,4 @@ const CardContainer = styled.div`
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
 
-`;
-
-const PokemonImage = styled.img`
-  width: 100px;
-  height: 100px;
-`;
-const PokemonName = styled.div`
-  margin-bottom: 15px;
-`
-const PokemonID = styled.div`
-  margin: 15px;
-  color: gray;
-`;
-const Button = styled.button`
-  background-color: red;
-  color: white;
-  border: none;
-  width: 50px;
-  height: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ff4d4d;
-  }
 `;

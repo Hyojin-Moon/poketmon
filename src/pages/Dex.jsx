@@ -6,11 +6,11 @@ const Dex = () => {
 
   return (
     <StDexContainer>
-      <Dashboard  />
+      <Dashboard />
       <PokemonList />
     </StDexContainer>
-  )
-}
+  );
+};
 
 export default Dex;
 
@@ -19,4 +19,4 @@ const StDexContainer = styled.div`
   gap: 16px;
   align-items: center;
   flex-direction: column;
-`
+`;

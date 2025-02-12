@@ -118,4 +118,4 @@ const StAddDeleteButton = styled.button`
   &:hover {
     background-color: #ff4d4d;
   }
-`
+`;

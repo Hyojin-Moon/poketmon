@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
 import MOCK_DATA from '../data/pokemonData';

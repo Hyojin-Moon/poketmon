@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { addPokemon } from '../redux/slices/pokemonSlice';
-import { StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js'
+import { StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js';
 
 const PokemonCard = ({ pokemon }) => {
 
@@ -28,7 +28,7 @@ const PokemonCard = ({ pokemon }) => {
       <StPokemonID>{`No. 00${pokemon.id}`}</StPokemonID>
       <StButton onClick={handleButtonClick}>추가</StButton>
     </StCardContainer>
-  )
+  );
 };
 
 export default PokemonCard;

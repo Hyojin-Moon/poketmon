@@ -5,6 +5,6 @@ const store = configureStore({
   reducer: {
     pokemon: pokemonReducer,
   }
-})
+});
 
-export default store;
+export default store;  

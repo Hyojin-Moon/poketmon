@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { removePokemon } from '../redux/slices/pokemonSlice.js';
-import { StContainer, StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js'
+import { StContainer, StButton, StPokemonImage, StPokemonName, StPokemonID } from '../css/GlobalStyle.js';
 const Dashboard = () => {
 
   const selectedPokemons = useSelector((state) => state.pokemon.selectedPokemons);
   const dispatch = useDispatch();
 
-  const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+  const imgDefault = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
 
   // 기본 포켓몬 이미지를 6개로 설정
   const filledPokemons = selectedPokemons.slice(); // 복사
